@@ -1,5 +1,5 @@
 class Solution {
-    public int dominantIndex(int[] nums) {
+   public int dominantIndex(int[] nums) {
 
 		int maxValue = 0;
 		int length = nums.length;
@@ -16,24 +16,11 @@ class Solution {
 
 		for (int counter = 0; counter < length; counter++) {
 			if (counter != index) {
-				if (max >= 2 * nums[counter]) {
-					twice = true;
-				}
-
-				else {
-					twice = false;
+				if (2 * nums[counter] > max) {
 					return -1;
 				}
 			}
 		}
-
-		if (twice) {
-			return index;
-		}
-
-		else {
-			return -1;
-		}
-
+		return index;
 	}
 }
