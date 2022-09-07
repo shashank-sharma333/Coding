@@ -3,12 +3,7 @@ class Solution {
      
         int original[] = new int[heights.length];
 
-		for (int counter = 0; counter < original.length; counter++) {
-
-			original[counter] = heights[counter];
-
-		}
-
+        original=heights.clone();
 		Arrays.sort(heights);
 
 		int countNotEqual = 0;
