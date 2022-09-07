@@ -25,44 +25,5 @@ class Solution {
         
         return Collections.max(targetSet);
         
-     /*   
-        Iterator<Integer> it = targetSet.iterator();
-		
-        int count=0;
-        int element=0;
-		
-       if(targetSet.size()>=3) 
-       {    
-           
-           while(it.hasNext() && count!=4)
-		{
-			element=it.next();
-            
-            count++;
-            if(count==3)
-            {
-                   
-            }
-		}
-       }
-        
-    else{
-           int maximum=it.next();
-         
-        while(it.hasNext())
-		{
-            int value=it.next();
-			if(value>maximum)
-            {
-                maximum=value;
-            }
-            count++;
-		}
-        
-        return maximum;
-    }
-             
-        return element;*/
-        
     }
 }
