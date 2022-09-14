@@ -1,7 +1,7 @@
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
         
-        int result=666666;
+        int result=nums.length+1;
         int leftCounter=0;
         int sum=0;
        
@@ -18,7 +18,7 @@ class Solution {
             
         }
         
-        return (result!=666666)? result:0;
+        return (result!=nums.length+1)? result:0;
         
         
     }
