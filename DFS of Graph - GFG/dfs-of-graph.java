@@ -40,43 +40,27 @@ class Solution {
 
     public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
         boolean visited[] = new boolean[V];
-
+        
+        dfs(adj,0,visited,list);
         // calling dfs function with source as 0
-        dfs(adj,0,V,list,visited);
-        
         return list;
-        
-       /* for(int i=0;i<V;i++)
-        {
-           if(!visited[i]==true)
-          {     System.out.println(visited[i]);
-              dfs(adj.get(i),visited,i, adj);}
-        }
-       /*  for(List<Integer> list:adj)
-        {
-           visited[indexCount]=true; 
-           dfs(adj,visited);
-           indexCount++;
-        }
-        */ 
     }
     
     
-    public void dfs(ArrayList<ArrayList<Integer>> adj,int src,int n, ArrayList<Integer> list,boolean [] visited)
+    public void dfs(ArrayList<ArrayList<Integer>> adj,int src, boolean[] visited,ArrayList<Integer> list)
     {
-        
         visited[src]=true;
-        
         list.add(src);
         
-        for(int nbr: adj.get(src))
+        for(int j: adj.get(src))
         {
-            if(visited[nbr]==false)
-            {
-                dfs(adj,nbr,n,list, visited);
-            }
+            if(visited[j]==false)
+            {dfs(adj,j,visited,list);}
         }
+        
     }
+    
+    
     
     
   /*  public static void dfs(List<Integer> list, Boolean[] visited, int i,ArrayList<ArrayList<Integer>> adj)
