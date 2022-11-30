@@ -63,61 +63,62 @@ class Solution
     //Function to return list containing vertices in Topological order. 
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
     {
-    
-    int ingress[] = new int[V];
-      
-    Arrays.fill(ingress,0);
-      
-    for(int i=0;i<V;i++)
-    {
-        for(int j: adj.get(i))
-        {
-            ingress[j]++;
-        }
-    }
+        int ingress[] = new int[V];
         
-    Queue<Integer> queue= new LinkedList<Integer>();
-    
-    for(int i=0;i<ingress.length;i++)
-    {
-        if(ingress[i]==0)
-        {
-            queue.add(i);
-        }
-    }
-    
-    ArrayList<Integer> numbers= new ArrayList<Integer>();
-    while(!queue.isEmpty())
-    {
-       int val= queue.poll();
-       numbers.add(val);
+        Arrays.fill(ingress,0);
+        
        
-       for(int j:adj.get(val))
+       for(int i=0;i<V;i++)
+       { 
+         for(int j: adj.get(i))
+        {
+           ingress[j]++;
+        }
+           
+       }
+       
+       Queue<Integer> queue = new LinkedList<Integer>();
+       
+       for(int i=0;i<ingress.length;i++)
        {
-           ingress[j]--;
-           if(ingress[j]==0)
+           if(ingress[i]==0)
            {
-               queue.add(j);
+               queue.add(i);
            }
        }
-    }
-    
-    if(numbers.size()!=V)
-    {
-        return new int[0];
-    }
-    
-    int[] answer= new int[numbers.size()];
-    
-    int i=0;
-    for(int val: numbers)
-    {
-      answer[i]= val;
-      i++;
-    }
-    
-     
-     return answer;
+       
+       ArrayList<Integer> answer = new ArrayList<Integer>();
+       
+       while(!queue.isEmpty())
+       {
+           int ans=queue.poll();
+           answer.add(ans);
+           
+           for(int j:adj.get(ans))
+           {
+               ingress[j]--;
+               if(ingress[j]==0)
+               {
+                   queue.add(j);
+               }
+           }
+           
+       }
+       
+       if(answer.size()!=V)
+       {
+           return new int[0];
+       }
+       
+       int[] result= new int[answer.size()];
+       
+       for(int i=0;i<answer.size();i++)
+       {
+           result[i]=answer.get(i);
+       }
+       
+       return result;
+       
     }
     
 }
