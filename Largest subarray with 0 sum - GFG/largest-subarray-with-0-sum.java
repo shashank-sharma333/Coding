@@ -31,9 +31,11 @@ class GfG
 {
     int maxLen(int arr[], int n)
     {
+        
         HashMap<Integer,Integer> prefixSum= new HashMap<>();
         int sum=0;
         int max=0;
+        
         for(int i=0;i<arr.length;i++)
         {
             sum=sum+arr[i];
@@ -43,14 +45,13 @@ class GfG
             }
             
             else{
-                
                 if(prefixSum.get(sum)!=null)
                 {
-                    //ide
-                   max = Math.max(max, i - prefixSum.get(sum)); 
+                    /*idea is if a prefix sum remains same for two indexes, 
+                    then the portion between them is zero*/
+                    max=Math.max(max,i-prefixSum.get(sum));
                 }
                 else{
-                    
                     prefixSum.put(sum,i);
                 }
             }
